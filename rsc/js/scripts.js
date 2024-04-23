@@ -22,3 +22,8 @@ for (let i = 1; i <= 1000; i++) {
 
 containerDiv.appendChild(controlDiv);
 
+let grids = document.querySelectorAll("div[class ^= 'grid-']");
+
+grids.forEach((grid) => {
+    grid.onmouseover = () => grid.style.border = "1px solid red"
+})

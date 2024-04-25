@@ -1,29 +1,38 @@
 
-let containerDiv = document.querySelector('.container');
-let controlDiv = document.createElement("div");
+let containerMain = document.querySelector('.container');
 
-controlDiv.setAttribute('style', "width: fit-content;")
-
-containerDiv.setAttribute('style', "width: 100%; height: 100%");
-
-let squareGrid = "";
-
-for (let i = 1; i <= 1000; i++) {
-    
-    let gridName = "grid";    
-    squareGrid = document.createElement('div');
-    
-    squareGrid.classList.add(gridName + '-' + i);
-    
-    squareGrid.setAttribute('style', "width: 5px; height: 5px; border: 1px solid black; border-bottom:0;");
-
-    controlDiv.appendChild(squareGrid);
+function createElements(element) {
+    return document.createElement(element);
 }
 
-containerDiv.appendChild(controlDiv);
 
-let grids = document.querySelectorAll("div[class ^= 'grid-']");
+function setAttributes(attributes, element) {
+    let properties = Object.keys(attributes);
+    let values = Object.values(attributes);
 
-grids.forEach((grid) => {
-    grid.onmouseover = () => grid.style.border = "1px solid red"
-})
+    let attribs = "";
+
+    let valueCount = 0;
+
+   for (let i = 0; i < Object.keys(attributes).length; i++) {
+        attribs = attribs + properties[i] + ": " + values[i] + ";";
+    
+    }
+    
+    element.setAttribute("style", attribs)   
+}
+
+function attachElements(parent, child) {
+    parent.append(child);
+}
+
+let container = createElements("div");
+
+setAttributes({
+    'color': "red",
+    'border': "2px solid orange",
+    'width': "500px",
+    'height': "500px"
+}, container);
+
+attachElements(containerMain, container)

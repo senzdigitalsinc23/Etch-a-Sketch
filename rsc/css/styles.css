@@ -1,4 +1,16 @@
 
-/* div[class ^= "grid-"]{
-    background-color: red;
-} */
+body {
+    background-color: bisque;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+
+.grid-container {
+    display: flex;
+    justify-content: stretch;
+}

@@ -77,13 +77,9 @@ attachElements(containerMain, gridContainer)
 //Print grid
 function printGrid() {
     
-    let n = gridSize; // row or column count
+    let n = gridSize; 
 
-    console.log(gridSize)
-    // defining an empty string
-    let string = "";
-
-    for (let i = 1; i <= n; i++) { // external loop
+    for (let i = 1; i <= n; i++) {
         
         row = createElements('div');
         let rowSize = 500 / gridSize;
@@ -116,11 +112,21 @@ function printGrid() {
             let opacity = 0.2;
 
             square.addEventListener('mouseover', (e) => {
+
+                let colorArr = [];
+                for (let i = 0; i < 3; i++) {
+
+                    let color = Math.floor(Math.random() * 128);                    
+                     
+                    colorArr.push(color);
+                }
+                
                 if (opacity < 1) {
                     opacity += 0.2;                    
-                    e.target.style = "background-color: red; opacity:" + opacity.toString();
-
-                }               
+                    //e.target.style = "opacity:" + opacity.;
+                    e.target.style = `background-color:rgb(${colorArr.toString()});opacity:${opacity.toString()}`;
+                } 
+                
             })
         }
         
@@ -146,15 +152,12 @@ let gridSize = 16;
 
 btnGridSize.onclick = () => {    
     gridSize = prompt("Enter number squares per grid. (NB: Max is 100)"); 
-    
+
     if (gridSize < 5 || gridSize > 100) {
         alert("Enter a valid figure (Between 5 and 100)")
-    } else {
-        
+    } else {  
 
-        clearGrid();
-        
-       
+        clearGrid();      
     }
 }
 
